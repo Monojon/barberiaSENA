@@ -1,0 +1,219 @@
+/* reset & box-sizing */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: #111; line-height: 1.45; background: #fff; }
+
+
+/*titulo*/
+.brand {
+  display: flex;            /* pone el logo y el título en una sola línea */
+  align-items: center;      /* centra verticalmente */
+  gap: 10px;                /* espacio entre logo y texto */
+  padding: 10px;
+}
+
+.brand-img {
+  width: 60px;              /* puedes ajustar el tamaño del logo */
+  height: auto;
+}
+.brand-title {
+  text-decoration: none;   /* elimina cualquier subrayado */
+  border-bottom: none;     /* elimina línea inferior si la tiene */
+}
+
+.brand-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;              /* color del texto */
+  font-family: 'Poppins', sans-serif; /* ejemplo de fuente elegante */
+  color: rgb(5, 5, 5);  /* rojo oscuro o el color que uses */
+  text-decoration: none;
+
+}
+
+/* ===== VARIABLES (tema barbería elegante) ===== */
+:root{
+  --bg: #0f0d0d;
+  --panel: #fffaf6;
+  --accent: #c49a5a; /* dorado suave */
+  --muted: #7e7a78;
+  --glass: rgba(255,255,255,0.06);
+  --container: 1100px;
+  --radius: 10px;
+}
+
+/* container */
+.container{ width: min(94%, var(--container)); margin: 0 auto; }
+
+/* header */
+.site-header{ background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.55)); position: sticky; top: 0; z-index: 60; backdrop-filter: blur(4px); }
+.header-inner{ display:flex; align-items:center; gap:1rem; justify-content:space-between; padding:0.9rem 0; }
+.brand-img{ height:48px; display:block; }
+.brand-img-small{ height:36px; }
+
+/* nav */
+.nav-list{ list-style:none; display:flex; gap:1rem; align-items:center; }
+.nav-list a{ color:var(--panel); text-decoration:none; padding:0.45rem 0.6rem; border-radius:6px; font-weight:600; }
+.nav-list a:hover{ color:var(--accent); transform:translateY(-2px); transition:all .18s ease; }
+.btn-cta{ background:var(--accent); color:#111; padding:0.55rem 0.9rem; border-radius:6px; text-decoration:none; font-weight:700; }
+
+/* header actions */
+.header-actions{ display:flex; gap:0.6rem; align-items:center; }
+.icon-btn{ color:var(--panel); text-decoration:none; font-size:1.05rem; padding:0.45rem; border-radius:8px; display:inline-flex; align-items:center; position:relative; }
+.icon-btn .badge{ position:absolute; top:-6px; right:-6px; background:#ff4d4f; color:#fff; font-size:.6rem; padding:4px 6px; border-radius:999px; display:inline-block; }
+
+/* mobile toggle */
+.mobile-toggle{ display:none; background:transparent; border:0; padding:0.5rem; }
+.hamburger{ width:22px; height:2px; background:var(--panel); display:block; position:relative; }
+.hamburger::before, .hamburger::after{ content:""; width:22px; height:2px; background:var(--panel); position:absolute; left:0; transition:all .18s; }
+.hamburger::before{ top:-7px; } .hamburger::after{ top:7px; }
+
+/* mobile menu offcanvas */
+.mobile-menu{ position:fixed; inset:0 0 0 60%; background:var(--bg); color:var(--panel); padding:1.2rem; transform:translateX(100%); transition:transform .28s ease; z-index:80; }
+.mobile-menu.open{ transform:translateX(0); left:0; right:0; }
+.mobile-nav{ display:flex; flex-direction:column; gap:1rem; margin-top:1rem; }
+.mobile-nav a{ color:var(--panel); text-decoration:none; font-size:1.05rem; padding:0.9rem 0.6rem; border-bottom:1px solid rgba(255,255,255,0.04); }
+.mobile-close{ background:transparent; border:0; color:var(--panel); font-size:1.3rem; float:right; }
+
+/* HERO */
+.hero{ min-height:64vh; display:flex; align-items:center; color:var(--panel); background-position:center; background-size:cover; position:relative; }
+.hero-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,0.55), rgba(5,5,5,0.6)); }
+.hero-content{ position:relative; z-index:2; padding:4rem 0; text-align:left; max-width:900px; }
+.hero h1{ font-family: 'Playfair Display', serif; font-size:clamp(28px,4.2vw,48px); margin-bottom:.6rem; color:#fff; letter-spacing:0.2px; }
+.hero .lead{ color:rgba(255,255,255,0.9); margin-bottom:1rem; }
+.btn{ display:inline-block; padding:0.6rem 1rem; border-radius:8px; text-decoration:none; }
+.btn-primary{ background:var(--accent); color:#111; font-weight:700; margin-right:.6rem; }
+.btn-outline{ background:transparent; color:var(--panel); border:1px solid rgba(255,255,255,0.08); }
+
+/* sections */
+.section{ padding:4.5rem 0; }
+.section .lead{ color:var(--muted); margin-bottom:1rem; }
+
+/* categories grid */
+.grid-cats{ display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top:1.2rem; }
+.cat-card{ position:relative; overflow:hidden; border-radius:12px; min-height:200px; display:flex; align-items:flex-end; }
+.cat-card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(.9) saturate(.9); transform:scale(1.02); transition:transform .6s ease; }
+.cat-card h3{ position:relative; z-index:2; padding:1rem; color:#fff; background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25)); width:100%; text-align:center; font-weight:700; }
+
+/* gallery grid */
+.grid-4{ display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-top:1.25rem; }
+.grid-item{ background:var(--panel); border-radius:10px; padding:0.8rem; text-align:center; box-shadow:0 6px 20px rgba(2,2,2,0.15); }
+.grid-item img{ width:100%; border-radius:8px; display:block; margin:0 auto 0.6rem auto; }
+
+/* prices */
+.prices-grid{ display:grid; grid-template-columns: 1fr 360px 1fr; gap:1.2rem; align-items:center; margin-top:1.4rem; }
+.price-list{ list-style:none; padding-left:0; }
+.price-list li{ display:flex; justify-content:space-between; padding:0.6rem 0.2rem; border-bottom:1px dashed rgba(0,0,0,0.06); font-weight:600; }
+
+/* contact form */
+.contact-grid{ display:grid; grid-template-columns: 1fr 420px; gap:2rem; align-items:start; }
+.contact-form{ background:var(--panel); padding:1rem; border-radius:10px; box-shadow:0 10px 30px rgba(2,2,2,0.06); }
+.contact-form label{ display:block; margin-bottom:0.8rem; font-size:0.95rem; color:var(--muted); }
+.contact-form input, .contact-form textarea{ width:100%; padding:0.7rem; border-radius:8px; border:1px solid rgba(0,0,0,0.06); font-size:0.95rem; margin-top:0.4rem; }
+
+/* footer */
+.site-footer{ background:var(--bg); color:var(--panel); padding:2.2rem 0 1rem; margin-top:2rem; }
+.footer-inner{ display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+.footer-links a{ color:var(--panel); text-decoration:none; margin-left:1rem; font-weight:600; }
+.copyright{ text-align:center; padding:1rem 0; color:var(--muted); font-size:0.9rem; }
+
+/* responsive */
+@media (max-width: 980px){
+  .prices-grid{ grid-template-columns: 1fr; }
+  .contact-grid{ grid-template-columns:1fr; }
+  .hero-content{ text-align:center; }
+  .nav-list{ display:none; }
+  .mobile-toggle{ display:block; }
+  .mobile-menu{ width:100%; left:0; right:0; transform:translateY(-100%); top:0; bottom:0; }
+  .mobile-menu.open{ transform:translateY(0); }
+}
+/* --- FOOTER GENERAL --- */
+.site-footer {
+  background-color: #111;      /* fondo oscuro elegante */
+  color: #fff;
+  padding: 40px 0 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;             /* se adapta a pantallas pequeñas */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- MARCA (logo + texto) --- */
+.footer-brand {
+  flex: 1;
+  min-width: 220px;
+}
+
+.brand-img-small {
+  width: 70px;                 /* 🔧 tamaño del logo */
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* --- ENLACES --- */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* --- REDES SOCIALES --- */
+.footer-social {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-social a {
+  display: inline-block;
+}
+
+.footer-social img {
+  width: 36px;                 /* 🔧 tamaño de los iconos */
+  height: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
+}
+
+/* --- COPYRIGHT --- */
+.copyright {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #888;
+}
+.footer-inner {
+  flex-direction: column;
+  text-align: center;
+}
+

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Barbería SENA — Inicio</title>
+  <meta name="description" content="Barbería SENA: cortes, afeitados y cuidado masculino. Reserva tu cita." />
+
+  <!-- Iconos -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="theme-color" content="#141212">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img src="imagen/logo.png" alt="Barbería SENA" class="brand-img">
+      </a>
+          <h1 class="brand-title">BARBERIA SENA</h1>
+      <nav id="main-nav" class="nav">
+        <ul class="nav-list">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto" class="btn btn-cta">Contáctanos</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#" class="icon-btn" title="Carrito"><i class="fa fa-shopping-cart"></i><sup class="badge">0</sup></a>
+        <a href="tel:+15555555556" class="icon-btn" title="Llamar"><i class="fa fa-phone"></i></a>
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Abrir menú">
+          <span class="hamburger"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Offcanvas mobile menu -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+      <button id="mobile-close" class="mobile-close" aria-label="Cerrar menú"><i class="fa fa-times"></i></button>
+      <nav class="mobile-nav">
+        <a href="#">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#precios">Precios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto" class="btn btn-cta full">Contáctanos</a>
+      </nav>
+      <div class="mobile-contact">
+        <a href="tel:+15555555556"><i class="fa fa-phone"></i> +1 555-555-5556</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero" style="background-image: url('imagen/cilla.png')">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1>Déjese llevar por la experiencia </h1>
+        <p class="lead">Transforme su rutina de cuidado personal con nuestro menú de servicios.</p>
+        <div class="hero-cta">
+          <a href="#categorias" class="btn btn-primary">Ver servicios</a>
+          <a href="#precios" class="btn btn-outline">Precios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS / CARDS -->
+    <section id="categorias" class="section section-cats">
+      <div class="container">
+        <h2>Brindamos servicios de barbería excepcionales</h2>
+        <p class="lead">Ofrecemos cortes y estilos que inspiran confianza.</p>
+
+        <div class="grid-cats">
+          <article class="cat-card">
+            <img src="imagen/cortes.jpg" alt="Cortes de cabello">
+            <h3>Cortes de cabello</h3>
+          </article>
+          <article class="cat-card">
+            <img src="imagen/barba.jpg" alt="Corte de barba">
+            <h3>Corte de barba</h3>
+          </article>
+          <article class="cat-card">
+            <img src="imagen/afeitado.jpg" alt="Afeitado clásico">
+            <h3>Afeitado clásico</h3>
+          </article>
+          <article class="cat-card">
+            <img src="imagen/accesorios.jpg" alt="Accesorios">
+            <h3>Accesorios</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY IMAGES -->
+    <section id="galeria" class="section section-grid">
+      <div class="container">
+        <h2>Pruebe los servicios de nuestra barbería</h2>
+        <p class="lead">Disfrute de un corte excepcional en cada visita</p>
+
+        <div class="grid-4">
+          <div class="grid-item">
+            <span class="num">01</span>
+            <img src="imagen/1.jpg" alt="">
+            <p>Productos de alta calidad</p>
+          </div>
+          <div class="grid-item">
+            <span class="num">02</span>
+            <img src="imagen/2.jpg" alt="">
+            <p>Ambiente relajante</p>
+          </div>
+          <div class="grid-item">
+            <span class="num">03</span>
+            <img src="imagen/3.jpg" alt="">
+            <p>Afeitado suave</p>
+          </div>
+          <div class="grid-item">
+            <span class="num">04</span>
+            <img src="imagen/4.jpg" alt="">
+            <p>Servicio excepcional</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICE LIST -->
+    <section id="precios" class="section section-prices">
+      <div class="container">
+        <div class="prices-intro">
+          <h2>Conozca nuestros servicios</h2>
+          <p class="lead">Selección de cortes, afeitados y más. ¡Disfrute de cada servicio!</p>
+        </div>
+
+        <div class="prices-grid">
+          <div class="price-col">
+            <h3>Cortes</h3>
+            <ul class="price-list">
+              <li><span class="name">Corte de Barba</span><span class="price">$20.000</span></li>
+              <li><span class="name">Corte Clásico</span><span class="price">$25.000</span></li>
+              <li><span class="name">Corte Premium</span><span class="price">$50.000</span></li>
+            </ul>
+          </div>
+
+          <div class="price-col center-img">
+            <img src="imagen/barberia.png" alt="Barbero" class="rounded" style="width:200px; height:auto;">
+          </div>
+
+          <div class="price-col">
+            <h3>Extras</h3>
+            <ul class="price-list">
+              <li><span class="name">Corte niños</span><span class="price">$20.000</span></li>
+              <li><span class="name">clásico</span><span class="price">$25.000</span></li>
+              <li><span class="name">Estilizado o puntas</span><span class="price">$15.000</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contacto" class="section section-contact">
+      <div class="container contact-grid">
+        <div>
+          <h2>Reserva y contacto</h2>
+          <p class="lead">Agenda tu cita por teléfono o ven a visitarnos. Te esperamos.</p>
+          <p><strong>Teléfono:</strong> <a href="tel:">30051533888</a></p>
+          <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad</p>
+        </div>
+
+        <form class="contact-form" action="#" onsubmit="return false;">
+          <label>
+            Nombre
+            <input type="text" name="name" required>
+          </label>
+          <label>
+            Teléfono o email
+            <input type="text" name="contact" required>
+          </label>
+          <label>
+            Mensaje
+            <textarea name="message" rows="4"></textarea>
+          </label>
+          <div class="form-actions">
+            <button class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="imagen/logo-white.png" alt="Barbería SENA" class="brand-img-small">
+        <p>Barbería Sena/experiencia y estilo.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contáctanos</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/" aria-label="Instagram"><i class=""></i><img src="imagen/instagram.png" alt=""></a>
+        <a href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fsettings%2F%3Ftab%3Dprivacy" aria-label="Facebook"><i class=""></i><img src="imagen/facebook.png" alt=""></a>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Barbería SENA. Todos los derechos reservados.</div>
+  </footer>
+  <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
