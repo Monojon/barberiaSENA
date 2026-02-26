@@ -1,69 +1,35 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const sql = require('mssql');
-const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const app = express();
+const sqliteDb = require('./init_sqlite'); // Importamos la conexión SQLite
 
+const app = express();
 const PORT = process.env.PORT || 3000;
-const USE_SQLITE = process.env.USE_SQLITE === 'true'; // Default to true for free demo
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', (req, res) => { res.sendFile(path.join(__dirname, 'index.html')); });
 
-// Database Configurations
-const dbConfig = {
-    user: process.env.DB_USER || 'sa',
-    password: process.env.DB_PASSWORD || 'YourPassword123',
-    server: process.env.DB_SERVER || 'localhost',
-    database: process.env.DB_NAME || 'BarberShop',
-    options: {
-        encrypt: true,
-        trustServerCertificate: true
-    }
-};
-
-const sqliteDbPath = path.join(__dirname, 'barber.db');
-let sqliteDb;
-
-if (USE_SQLITE) {
-    sqliteDb = new sqlite3.Database(sqliteDbPath);
-    console.log('Using SQLite Database');
-} else {
-    console.log('Using SQL Server (mssql)');
-}
-
-// Unified Query Helper
+// Helper para ejecutar queries en SQLite
 async function executeQuery(query, params = {}) {
-    if (USE_SQLITE) {
-        return new Promise((resolve, reject) => {
-            const sqliteQuery = query.replace(/@(\w+)/g, '?');
-            const values = Object.values(params);
+    return new Promise((resolve, reject) => {
+        const sqliteQuery = query.replace(/@(\w+)/g, '?');
+        const values = Object.values(params);
 
-            if (query.trim().toUpperCase().startsWith('SELECT')) {
-                sqliteDb.all(sqliteQuery, values, (err, rows) => {
-                    if (err) reject(err);
-                    else resolve({ recordset: rows });
-                });
-            } else {
-                sqliteDb.run(sqliteQuery, values, function (err) {
-                    if (err) reject(err);
-                    else resolve({ recordset: [{ id: this.lastID }] });
-                });
-            }
-        });
-    } else {
-        let pool = await sql.connect(dbConfig);
-        let request = pool.request();
-        for (const [key, value] of Object.entries(params)) {
-            request.input(key, value);
+        if (query.trim().toUpperCase().startsWith('SELECT')) {
+            sqliteDb.all(sqliteQuery, values, (err, rows) => {
+                if (err) reject(err);
+                else resolve({ recordset: rows });
+            });
+        } else {
+            sqliteDb.run(sqliteQuery, values, function (err) {
+                if (err) reject(err);
+                else resolve({ recordset: [{ id: this.lastID }] });
+            });
         }
-        return await request.query(query);
-    }
+    });
 }
 
 // Admin Auth Middleware
@@ -150,6 +116,4 @@ app.post('/api/admin/barbers', isAdmin, async (req, res) => {
     }
 });
 
-app.listen(PORT, () => console.log(`Server on http://localhost:${PORT}`));
-
-
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
