@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-const USE_SQLITE = process.env.USE_SQLITE === 'true' || true; // Default to true for free demo
+const USE_SQLITE = process.env.USE_SQLITE === 'true'; // Default to true for free demo
 
 // Middleware
 app.use(cors());
@@ -150,3 +150,4 @@ app.post('/api/admin/barbers', isAdmin, async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server on http://localhost:${PORT}`));
+
