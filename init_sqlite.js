@@ -1,5 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./barber.db');
+const path = require('path');
+
+// Ruta absoluta al archivo barber.db
+const dbPath = path.join(__dirname, 'barber.db');
+const db = new sqlite3.Database(dbPath);
 
 db.serialize(() => {
     // Users Table
@@ -48,4 +52,5 @@ db.serialize(() => {
     console.log("Database SQLite 'barber.db' initialized successfully.");
 });
 
-db.close();
+// Exportar la conexión para usarla en server.js
+module.exports = db;
